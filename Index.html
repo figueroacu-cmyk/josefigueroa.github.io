@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> José Luis Figueroa Rojas | Analista de Sistemas & Desarrollo con IA</title>
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #162032;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-1: #6366f1; /* Indigo */
+      --accent-2: #06b6d4; /* Cyan */
+      --border-color: #334155;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* --- NAVBAR --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid var(--accent-1);
+      border-radius: 50px;
+      color: var(--accent-1);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+    }
+
+    /* --- SECTIONS GENERAL --- */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .section-subtitle {
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem auto;
+      font-size: 1.1rem;
+    }
+
+    /* --- ABOUT / ENFOQUE --- */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .approach-text h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-2); }
+    .approach-text p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .approach-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      font-family: monospace;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .code-comment { color: #64748b; }
+    .code-keyword { color: #c084fc; }
+    .code-string { color: #34d399; }
+
+    /* --- SERVICES --- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-1);
+    }
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .service-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .service-card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+    /* --- CONTACT --- */
+    .contact {
+      text-align: center;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      max-width: 100%;
+      padding: 6rem 2rem;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-links a {
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .contact-links a:hover {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; } /* Simplified for mobile template */
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">&lt;[Tu Nombre] /&gt;</div>
+    <ul class="nav-links">
+      <li><a href="#enfoque">Mi Enfoque</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="badge">🚀 Análisis de Sistemas + Inteligencia Artificial</div>
+      <h1>Transformo ideas complejas en <span>sistemas inteligentes</span></h1>
+      <p>Soy [Tu Nombre], Analista de Sistemas. Diseño y desarrollo soluciones de software de alto rendimiento, acelerando la innovación mediante la integración de IA (Qwen).</p>
+      <a href="#contacto" class="btn">Hablemos de tu proyecto</a>
+    </div>
+  </header>
+
+  <section id="enfoque">
+    <h2 class="section-title">Mi Enfoque: Humano + IA</h2>
+    <p class="section-subtitle">No solo escribo código; entiendo tu negocio. Combino mi criterio como Analista de Sistemas con el poder de procesamiento de Qwen para entregar resultados excepcionales.</p>
+    
+    <div class="approach-grid">
+      <div class="approach-text">
+        <h3>¿Por qué trabajar conmigo?</h3>
+        <p>La arquitectura y el análisis de requisitos requieren pensamiento humano. La ejecución y la optimización pueden potenciarse con IA.</p>
+        <p>Al utilizar <strong>Qwen</strong> en mi flujo de trabajo, logro:</p>
+        <p>✅ <strong>Entregas más rápidas</strong> sin sacrificar calidad.<br>
+        ✅ <strong>Código más limpio</strong> y mejor documentado.<br>
+        ✅ <strong>Resolución de problemas</strong> complejos con múltiples perspectivas.</p>
+      </div>
+      <div class="approach-visual">
+        <span class="code-comment">// Mi flujo de trabajo diario</span><br>
+        <span class="code-keyword">const</span> proyecto = {<br>
+        &nbsp;&nbsp;analista: <span class="code-string">"[Tu Nombre]"</span>,<br>
+        &nbsp;&nbsp;motor_ia: <span class="code-string">"Qwen"</span>,<br>
+        &nbsp;&nbsp;objetivo: <span class="code-string">"Excelencia técnica"</span><br>
+        };<br><br>
+        <span class="code-keyword">function</span> desarrollar(proyecto) {<br>
+        &nbsp;&nbsp;<span class="code-keyword">return</span> analizar(proyecto) + ia_potenciar();<br>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <h2 class="section-title">Servicios</h2>
+    <p class="section-subtitle">Soluciones a medida para llevar tu negocio al siguiente nivel tecnológico.</p>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Análisis y Diseño</h3>
+        <p>Levanto tus requerimientos, diseño la arquitectura del sistema y creo modelos de datos robustos y escalables.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Desarrollo Ágil con IA</h3>
+        <p>Programación de módulos, APIs y aplicaciones completas utilizando metodologías ágiles y asistencia de IA para máxima eficiencia.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <h3>Automatización de Procesos</h3>
+        <p>Identifico cuellos de botella en tus procesos actuales y desarrollo scripts o sistemas para automatizar tareas repetitivas.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Integración de IA</h3>
+        <p>Asesoría e implementación de modelos de lenguaje y herramientas de IA dentro de tus sistemas existentes para potenciar su valor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2 class="section-title">¿Listo para construir el futuro?</h2>
+    <p class="section-subtitle">Cuéntame sobre tu idea o el problema que necesitas resolver. Te responderé a la brevedad.</p>
+    <div class="contact-links">
+      <a href="mailto:tu@email.com">📧 tu@email.com</a>
+      <a href="https://linkedin.com/in/tu-perfil" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/tu-usuario" target="_blank">💻 GitHub</a>
+      <a href="https://wa.me/5491112345678" target="_blank">💬 WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 José Luis Figueroa Rojas| Analista de Sistemas. Desarrollado con la ayuda de Qwen AI.</p>
+  </footer>
+
+</body>
+</html>
